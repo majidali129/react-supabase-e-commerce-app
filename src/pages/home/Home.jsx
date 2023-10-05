@@ -1,7 +1,8 @@
+import HomePage from "../../ui/HomePage"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <HomePage />
   )
 }
 

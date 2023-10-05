@@ -1,7 +1,14 @@
+import Logo from "./Logo"
+import NavMenus from "./NavMenus"
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <nav 
+    className="bg-stone-400 py-2 px-6 text-stone-50 flex items-center justify-between dark:bg-pink-200 rounded-md"
+    >
+      <Logo />
+      <NavMenus />
+    </nav>
   )
 }
 
