@@ -11,20 +11,23 @@ font-family: 'Poppins', sans-serif;
 @layer base{
     
     h1{
-        @apply text-5xl tracking-tight text-stone-800
+        @apply text-3xl md:text-4xl lg:text-5xl tracking-tight text-stone-700
     }
     h2{
-        @apply  tracking-wide  md:font-[700] font-[600] text-stone-800 text-2xl md:text-3xl
+        @apply  tracking-wide  md:font-[600] xl:font-[700] font-[500] text-stone-700 text-2xl md:text-3xl
     }
     h3{
-        @apply text-xl md:text-2xl text-stone-700
+        @apply text-xl md:text-xl lg:text-2xl text-stone-700
     }
     p{
-        @apply text-lg text-stone-500
+        @apply text-lg text-stone-400
     }
 }
 
 @layer utilities {
+    .container{
+        @apply xl:max-w-[1440px] md:w-[1080px] mx-auto
+    }
     .flex-flex{
         @apply flex items-center gap-4
     }
@@ -33,6 +36,30 @@ font-family: 'Poppins', sans-serif;
     }
     a.active{
         @apply text-teal-700 border-b-2 border-teal-700
+    }
+
+    .product-bg-clip {
+        clip-path: polygon(4% 0, 100% 0%, 96% 100%, 0% 100%);
+    }
+    .strong{
+        @apply capitalize italic text-yellow-800
+    }
+    .cart-icon::before{
+        @apply absolute py-[1px] w-8  text-center  text-yellow-700 -top-3 -right-4 bg-stone-50 opacity-70;
+        content: attr(data-total);
+    }
+
+    .toast-style {
+        @apply  w-72 max-w-[20rem] text-base bg-stone-300 text-stone-700
+    }
+    .pagenation-btn{
+        @apply  py-3 px-6 flex items-center justify-center gap-x-4 border-none outline-none ring-2 ring-stone-300 rounded-md bg-stone-50 text-stone-700 cursor-pointer active:bg-yellow-800 active:text-yellow-50 active:ring-yellow-50  disabled:cursor-wait 
+    }
+    .pagenation-btn:hover:not(:disabled){
+        @apply bg-yellow-800 text-yellow-50
+    }
+    .signup-btn:hover:not(:disabled){
+        @apply bg-green-950 
     }
 }
 
@@ -44,3 +71,40 @@ a.active{
 .line-height{
     line-height: 3rem;
 }
+
+.card::before{
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    content: 'Buy Now';
+    padding: 4px 10px;
+    background-color: #422006;
+    color: #fefce8;
+    cursor: pointer;
+
+}
+
+*,*::before,*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    /* font-size: 62.5%; */
+}
+
+button:disabled,
+input:disabled,
+a:disabled{
+    cursor: wait;
+}
+
+
+/* .pagenation-btn:hover:not(:disabled){
+    background-color: #854d0e;
+    color: #fefce8;
+} */
+
+/* .form-input{
+    box-shadow: 1px 3px 8px gray;
+} */

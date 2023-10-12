@@ -1,8 +1,8 @@
-
+import SignUpForm from '../../features/auth/SignUpForm'
 
 const SignUp = () => {
   return (
-    <div>SignUp</div>
+    <SignUpForm />
   )
 }
 

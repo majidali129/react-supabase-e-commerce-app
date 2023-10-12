@@ -5,7 +5,7 @@ const AppLayout = () => {
   return (
     <div >
       <Header />
-      <main className="flex flex-col gap-10">
+      <main className="flex flex-col gap-10 container">
         <Outlet />
       </main>
 
