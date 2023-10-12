@@ -3,6 +3,7 @@ import FormInput from "../../ui/FormInput";
 import FormRow from "../../ui/FormRow";
 import Button from "../../ui/Button";
 import useLogin from "./useLogin";
+import Modal from "../../ui/Modal";
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: {errors},reset} = useForm();
@@ -50,6 +51,7 @@ const LoginForm = () => {
         </FormRow>
       </form>
     </div>
+
   );
 };
 

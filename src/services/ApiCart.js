@@ -94,3 +94,13 @@ export const getCartItems = async () => {
 
     return data
 }
+
+
+export const deleteCartItem = async (itemId) => {
+  const { error } = await supabase
+  .from('cart')
+  .delete()
+  .eq('id', itemId)
+
+  if(error) throw new Error(error.message)
+}

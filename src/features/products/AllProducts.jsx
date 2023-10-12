@@ -1,3 +1,4 @@
+import Modal from "../../ui/Modal";
 import Pagenation from "../../ui/Pagenation";
 import ProductCard from "./ProductCard"
 import { useProducts } from "./useProducts";
@@ -9,8 +10,8 @@ const AllProducts = () => {
 
   
   return (
-    <section className="mt-[10rem] mb-[10rem] container">
-      <ul className=" grid 2xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-4 gap-y-10  ">
+    <section className="mt-[5rem] mb-[10rem] container">
+      <ul className=" grid  2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-4 gap-y-10  ">
         {
           products?.map(product => {
             const {id, brand, tag_list,  name, price, price_sign, description, category, product_type, api_featured_image: image} = product;
@@ -25,6 +26,7 @@ const AllProducts = () => {
         
       </ul>
       <Pagenation count={count} />
+      <Modal />
     </section>
   )
 }

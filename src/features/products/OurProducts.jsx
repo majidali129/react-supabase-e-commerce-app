@@ -13,24 +13,20 @@ const OurProducts = () => {
         </p>
       </div>
 
-      <ul className="w-full  py-4 px-1  grid grid-cols-2 gap-x-4  gap-y-4  md:grid-cols-3 md:gap-3 xl:grid-cols-3 lg:gap-5    ">
+      <ul className="w-full  py-4 px-1  grid grid-cols-2 gap-x-4  gap-y-4  md:grid-cols-3 md:gap-3 lg:grid-cols-4 lg:gap-5    ">
         {ourProducts.map((product) => {
           const {
             id: productId,
             name,
-            price,
             api_featured_image: image,
             category,
-            description,
           } = product;
           return (
           <OurProductCard
             key={productId}
-            name={name}
-            price={price}
-            image={image}
-            category={category}
-            description={description}
+            productName={name}
+            productImage={image}
+            productCategory={category}
           /> 
           )
 })}

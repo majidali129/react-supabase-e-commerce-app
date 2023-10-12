@@ -5,9 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import Home from './pages/home/Home'
 import Products  from './pages/products/Products'
-import Cart from './pages/cart/Cart'
 import Categories from './pages/categories/Categories'
-import Login from './pages/login/Login'
 import SignUp from './pages/signup/SignUp'
 import Contact from "./pages/contact/Contact"
 import AppLayout from "./ui/AppLayout"

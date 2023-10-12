@@ -4,6 +4,8 @@ import useCart from "./useCart"
 import BackButton from "../../ui/BackButton"
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../auth/useUser"
+import Modal from "../../ui/Modal"
+import ConfirmDelete from "../../ui/ConfirmDelete"
 
 
 const CartItems = () => {
@@ -23,9 +25,16 @@ const CartItems = () => {
     <BackButton >&larr; Go to Store</BackButton>
     </div>
     )
+
+    function handleClearCart () {
+      console.log('Cart is clear now');
+      
+    }
     
   return (
     <section className="w-full h-full py-[3rem] px-[1rem] border-2">
+      <Modal>
+
       <div className="cart-wrapper rounded-md bg-white py-[3rem] px-[1rem] space-y-10 ">
         <BackButton  > &larr; Go Back </BackButton>
       <h1 className="text-center border-b pb-4">Your Cart</h1>
@@ -35,7 +44,11 @@ const CartItems = () => {
 
         <div className=" grid justify-items-end gap-y-4 py-2 px-4">
           <p className=" text-xl">Total: $<strong className="strong">{totalCartAmount}</strong></p>
-          {<Button 
+          <div className="flex items-center gap-4">
+            <Modal.Open opens='clearCart'>
+            <Button variation='danger' onClick={handleClearCart}>Clear Cart</Button>
+            </Modal.Open>
+          <Button 
           variation='primary'
           width='fit'
           disabled={isLoadingUser}
@@ -46,9 +59,14 @@ const CartItems = () => {
 
           >
             Proceed to checkout
-          </Button>}
+          </Button>
+          </div>
         </div>
       </div>
+      <Modal.Window name='clearCart'>
+        <ConfirmDelete resourceName='cart along with items' disabled={false} onConfirm={() => handleClearCart()} />
+      </Modal.Window>
+      </Modal>
 
     </section>
   )
