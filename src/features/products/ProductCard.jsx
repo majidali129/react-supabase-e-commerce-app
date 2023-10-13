@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { BiCartDownload } from "react-icons/bi";
 import icon from "../../../public/makeup-icon.png";
 import Button from "../../ui/Button";
@@ -29,10 +29,11 @@ const ProductCard = ({
     total_price: exactPrice * quantity,
   };
 
+
   return (
     <Link to={`${productId}`}>
-      <section className="  hover:scale-105 transition-all duration-500 ease-in-out">
-        <div className="card-wrapper bg-white p-4 flex flex-col items-start space-y-2 rounded-md max-sm:w-10/12 mx-auto      ">
+      <section className="transition-all duration-500 ease-in-out hover:scale-105">
+        <div className="flex flex-col items-start p-4 mx-auto space-y-2 bg-white rounded-md card-wrapper max-sm:w-10/12 ">
           <div className="flex items-center justify-center w-full">
             <figure className=" md:w-52 md:h-52 w-72 h-72">
               <img
@@ -43,8 +44,8 @@ const ProductCard = ({
             </figure>
           </div>
 
-          <div className="content space-y-4 w-full ">
-              <div className="flex items-center  justify-between gap-3 px-4">
+          <div className="w-full space-y-4 content ">
+              <div className="flex items-center justify-between gap-3 px-4">
                 <div className="flex items-center gap-x-1">
 
                   <span>
@@ -62,7 +63,7 @@ const ProductCard = ({
               </div>
             <h3 className="uppercase line-clamp-1">{productName}</h3>
 
-            <div className="text-center flex items-start flex-col gap-y-4 justify-between gap-x-3">
+            <div className="flex flex-col items-start justify-between text-center gap-y-4 gap-x-3">
               <Button
                 variation="secondary"
                 className="w-full"
@@ -71,7 +72,12 @@ const ProductCard = ({
                 Details
               </Button>
               <Button
-                onClick={() => addProduct(cartItem)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  addProduct(cartItem);
+                  <Navigate to='/cart' replace={true} />
+                }}
                 disabled={addingProduct}
                 variation="primary"
                 className="w-full"

@@ -14,7 +14,6 @@ const AddressForm = () => {
   const {register, formState:{errors}, reset, handleSubmit} = useForm()
 
   function onSubmit ({customerName, streetName, city, state, country }) {
-    // if(!customerName || !street || !city || !state || !country) return;
 
     const shippingAddress = {
     customer_name:customerName,
@@ -29,13 +28,12 @@ const AddressForm = () => {
       onSettled: () => reset
     })
 
-    // navigate('/payment-method')
   }
   return (
     <div className="bg-white md:w-[60%] mx-auto px-8 py-[3rem] mt-[2rem] rounded-md">
       <form 
       onSubmit={handleSubmit(onSubmit)}
-      className=" flex flex-col items-start  gap-y-4">
+      className="flex flex-col items-start gap-y-4">
         <FormRow className="flex-col" error={errors?.customerName?.message}>
           <Label htmlFor="customerName">Customer Name</Label>
           <FormInput disabled={addingAddress} id="customerName" name='customerName' placeholder="Hamza Rashid" {...register('customerName', {

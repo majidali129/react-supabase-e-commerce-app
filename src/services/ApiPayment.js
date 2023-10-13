@@ -19,12 +19,3 @@ export const getPaymentInfo = async () => {
     return data;
 
 }
-
-
-export const handlePaymentOrder = async () => {
-    const {error} = await supabase
-    .from('cart')
-    .delete().gt('id', 0)
-
-    if(error) throw new Error(error.message)
-}

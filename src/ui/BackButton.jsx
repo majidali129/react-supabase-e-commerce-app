@@ -6,7 +6,7 @@ const BackButton = ({children}) => {
   return (
     <button 
     onClick={() => navigate(-1, {replace: true})}
-    className="text-yellow-900 cursor-pointer ring-1 ring-stone-400 py-1 px-6"
+    className="px-6 py-1 text-yellow-900 cursor-pointer ring-1 ring-stone-400"
     >
        {children}
     </button>

@@ -91,6 +91,7 @@ a.active{
 }
 html{
     /* font-size: 62.5%; */
+    font-family:'Lato',  'Poppins';
 }
 
 button:disabled,

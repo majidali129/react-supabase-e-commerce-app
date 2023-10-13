@@ -1,35 +1,25 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { addProductToCart } from "../../services/ApiCart"
-import { updateCartItem } from "../../services/ApiCart"
-import useCart from "./useCart"
 import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 
 const useAddCartItem = () => {
-    const {cartItems,} = useCart()
     const queryClient = useQueryClient()
-
-    function addOrUpdate (product) {
-        const existingItem = cartItems.find(item => item?.id === product?.id);
-        if(existingItem){
-            updateCartItem(product?.id, product?.price)
-        }else{
-            addProductToCart(product)
-        }
-    }
+    const navigate = useNavigate()
 
   const {mutate: addProduct, isLoading: addingProduct} = useMutation(({
-    mutationFn: (product) => addOrUpdate(product),
+    mutationFn: (product) => addProductToCart(product, product?.id),
     mutationKey: ['cart'],
     onSuccess: () => {
-        toast.success('Item has been added to cart')
+        toast.success('Product has been added to your cart')
         queryClient.invalidateQueries({
             queryKey: ['cart']
-        })
+        });
+        navigate('/cart')
     },
     onError: () =>{
-        toast.error('Item can\'t be added to cart for now. Try again after some time')
-        // console.log('Item can\'t be added to cart for now. Try again after some time');
+        toast.error('Product can\'t be added to cart for now. Try again after some time')
     } 
   }))
 

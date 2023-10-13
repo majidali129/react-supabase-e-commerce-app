@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../features/auth/useUser"
 import { useEffect } from "react"
+import Spinner from "./Spinner"
 
 const ProtectedRoute = ({children}) => {
     const navigate = useNavigate()
@@ -11,7 +12,7 @@ const ProtectedRoute = ({children}) => {
         if(!isLoadingUser && !isAuthenticated) navigate('/login');
     }, [isLoadingUser, isAuthenticated, navigate])
     // 3) if authenticated, show loading state for user 
-    if(isLoadingUser) return <h3>Loading User...</h3>
+    // if(isLoadingUser) return <Spinner />
     // 4) render childs if status is success
  if(isAuthenticated) return (
     children

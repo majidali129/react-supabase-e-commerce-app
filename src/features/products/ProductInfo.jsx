@@ -3,14 +3,14 @@ import parse from "html-react-parser";
 import { useProduct } from "./useProduct";
 import useAddCartItem from "../cart/useAddCartItem";
 import Button from "../../ui/Button";
+import Spinner from "../../ui/Spinner";
 
 const ProductInfo = () => {
   const { productId } = useParams();
-  const navigate = useNavigate()
   const { product, isLoading } = useProduct(productId);
   const { addProduct, addingProduct } = useAddCartItem();
 
-  if (isLoading) return <h1>Loading Product Info...</h1>;
+  if (isLoading) return <Spinner message='product details' />;
   
   const {
     id,
@@ -36,15 +36,16 @@ const ProductInfo = () => {
     total_price: exactPrice * quantity
   };
 
+  
+
   function handleAddToCart() {
     addProduct(cartItem);
-    navigate('/cart')
   }
 
   return (
     <section className=" rounded-md mt-[1.5rem] ">
       <div className="w-[90%] mx-auto  py-10 px-4 md:px-20 bg-white md:product-bg-clip rounded-sm ">
-        <div className="px-6 grid grid-cols-1 md:grid-cols-2 md:divide-x-2 divide-y-2  md:gap-x-2 gap-y-6">
+        <div className="grid grid-cols-1 px-6 divide-y-2 md:grid-cols-2 md:divide-x-2 md:gap-x-2 gap-y-6">
           <figure className="">
             <img
               src={image}
@@ -52,10 +53,10 @@ const ProductInfo = () => {
               alt={`image of beauty product ${name}`}
             />
           </figure>
-          <article className=" flex flex-col gap-y-4 items-start px-2 md:px-6 justify-center">
+          <article className="flex flex-col items-start justify-center px-2 gap-y-4 md:px-6">
             <div className="space-y-3 max-md:mt-4">
               <h1>{name}</h1>
-              <span className="block text-yellow-800 font-semibold italic">
+              <span className="block italic font-semibold text-yellow-800">
                 {product_type?.replace("_", " ")}
               </span>
             </div>
@@ -67,7 +68,7 @@ const ProductInfo = () => {
               {/* <button
                 onClick={handleAddToCart}
                 disabled={addingProduct}
-                className="bg-yellow-900 hover:bg-yellow-950 text-yellow-50 py-3 px-10 disabled:cursor-wait"
+                className="px-10 py-3 bg-yellow-900 hover:bg-yellow-950 text-yellow-50 disabled:cursor-wait"
               >
                 Buy
               </button> */}
@@ -86,14 +87,14 @@ const ProductInfo = () => {
             <div>
               <p>
                 Brand:{" "}
-                <span className="text-yellow-800 italic tracking-wide text-xl">
+                <span className="text-xl italic tracking-wide text-yellow-800">
                   {" "}
                   {brand}
                 </span>
               </p>
               <p>
                 Tags:{" "}
-                <span className=" text-yellow-800 italic tracking-wide text-xl">
+                <span className="text-xl italic tracking-wide text-yellow-800 ">
                   {" "}
                   {JSON.parse(tag_list).join(", ")}
                 </span>

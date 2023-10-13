@@ -1,12 +1,13 @@
 import Modal from "../../ui/Modal";
 import Pagenation from "../../ui/Pagenation";
+import Spinner from "../../ui/Spinner";
 import ProductCard from "./ProductCard"
 import { useProducts } from "./useProducts";
 const AllProducts = () => {
   const {products, isLoading, count} = useProducts()
   
   
-  if(isLoading) return <h2>Loading .... </h2>
+  if(isLoading) return <Spinner message='products. Please wait a moment' />
 
   
   return (
