@@ -26,27 +26,26 @@ const CartItem = ({item}) => {
           </figure>
           <div className="flex-grow w-full">
             <div className="flex items-start justify-between w-full px-2 mt-3 md:items-center max-md:flex-col ">
-            <div className="space-y-3 border-green-300 max-md:flex max-md:items-center max-md:justify-between max-md:w-full">
+            <div className="space-y-3 max-md:flex max-md:items-center max-md:justify-between max-md:w-full">
             <div className="md:space-y-1">
                 <strong className="break-words strong">{item?.name}</strong>
                 <p className="text-sm">Delivery at: 24th July</p>
               </div>
-              <div>
+              <div >
                 <strong className="strong ">Product Price</strong>
                 <p >${item?.price}</p>
               </div>
             </div>
-            <div>
-
+            <div className="max-md:w-full">
               <div className="flex items-center max-md:w-full max-md:justify-between md:gap-x-4 gap-x-20 max-md:mt-2 ">
-                <p className="space-x-2 ">
+                <p className="flex items-center space-x-2 ">
                   <Button 
                   width='fit'
                   variation='small'
                   onClick={() => decreaseQuantity(item)}
                   disabled={decreasingQuantity}
                   >-</Button>
-                  <span className="px-4 py-1 text-lg border-2 border-stone-200 text-stone-500">{item?.quantity}</span>
+                  <span className="px-2 text-lg border-2 md:py-1 md:px-4 border-stone-200 text-stone-500">{item?.quantity}</span>
                   <Button
                   width='fit'
                   variation='small'
@@ -69,10 +68,9 @@ const CartItem = ({item}) => {
                   <ConfirmDelete resourceName='item from your cart' disabled={deletingItem} onConfirm={handleDeleteItem} />
                 </Modal.Window>
                </div>
-
+               </div>
             </div>
             </div>
-          </div>
         </li>
         </Modal>
 
