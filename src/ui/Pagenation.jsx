@@ -27,7 +27,7 @@ const Pagenation = ({count}) => {
 
   return (
     <section 
-    className="flex items-center justify-between rounded-md px-4 py-3 bg-stone-50 mt-8"
+    className="flex items-center justify-between px-4 py-3 mt-8 rounded-md max-md:gap-y-3 max-md:flex-col bg-stone-50"
     >
       <p className="text-stone-700">
         Showing <span className="font-semibold"> {(currentPage - 1) * PAGE_SIZE + 1} </span>
