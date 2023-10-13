@@ -32,7 +32,7 @@ const CartItem = ({item}) => {
                 <p className="text-sm">Delivery at: 24th July</p>
               </div>
               <div >
-                <strong className="strong ">Product Price</strong>
+                <strong className="strong ">Price:</strong>
                 <p >${item?.price}</p>
               </div>
             </div>
@@ -55,7 +55,7 @@ const CartItem = ({item}) => {
                   </Button>
                 </p>
                 <div>
-                  <strong className="strong">Total Price:</strong>
+                  <strong className="strong">Total:</strong>
                 <p>$ <strong className="text-xl text-yellow-700">{`${item?.total_price}`}</strong></p>
                 </div>
               </div>
