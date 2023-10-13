@@ -21,8 +21,8 @@ const Button = ({ children, disabled, onClick,type='button', to, variation, clas
 
 
   if(to) return(
-    <Link to={to} className="tracking-wide text-yellow-900" >
-    {children}
+    <Link to={to} className="w-full italic tracking-wide text-center" >
+    Don't have an account? <span className="text-blue-700">{ children}</span>
     </Link>
   )
 

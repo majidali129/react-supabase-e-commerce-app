@@ -4,10 +4,12 @@ import FormRow from "../../ui/FormRow";
 import Button from "../../ui/Button";
 import useLogin from "./useLogin";
 import Modal from "../../ui/Modal";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: {errors},reset} = useForm();
   const {login, logingInUser} = useLogin()
+  const navigate = useNavigate()
 
 
   function onSubmit({email, password}) {
@@ -46,8 +48,9 @@ const LoginForm = () => {
           />
         </FormRow>
 
-        <FormRow>
+        <FormRow className='flex-col gap-y-2'>
           <Button disabled={logingInUser} variation='primary' className='w-full' type="submit">Login</Button>
+          <Button variation='secondary' to='/signup'>Sign Up</Button>
         </FormRow>
       </form>
     </div>
